@@ -1,40 +1,27 @@
+use ripledd_api_wrapper::RipleddClient;
 use std::collections::HashMap;
-use reqwest::Client;
+use reqwest::Error;
 
-const API_URL: &str = "https://ripledd.com/api/";
+fn main() -> Result<(), Error> {
+  // Replace with your Ripledd email and password (consider using environment variables for security)
+  let email = "example@example.com";
+  let password = "123456789";
 
-static ENDPOINTS: &'static [&str] = &[
-    "post.php",
-];
+  // Create a Ripledd client
+  let mut ripledd = RipleddClient::new(email.to_string(), password.to_string(), None);
 
-pub struct RipleddClient {
-    email: String,
-    password: String,
-    channel_id: Option<String>,
-    client: Client,
-}
+  // Create a post body
+  let post_body = "The post from the API";
 
-impl RipleddClient {
-    pub fn new(email: String, password: String, channel_id: Option<String>) -> Self {
-        RipleddClient {
-            email,
-            password,
-            channel_id,
-            client: Client::new(),
-        }
-    }
+  // Call the create_post function to send the post
+  let response = ripledd.create_post(post_body).await?;
 
-    pub async fn create_post(&self, body: &str) -> Result<reqwest::Response, reqwest::Error> {
-        let mut data = HashMap::new();
-        data.insert("email", &self.email);
-        data.insert("password", &self.password);
-        data.insert("content", body);
+  // Check for successful response
+  if response.status().is_success() {
+      println!("Post created successfully!");
+  } else {
+      println!("Error creating post: {}", response.status());
+  }
 
-        if let Some(channel_id) = &self.channel_id {
-            data.insert("channel_id", channel_id);
-        }
-
-        let url = format!("{}{}", API_URL, ENDPOINTS[0]);
-        self.client.post(&url).form(&data).await
-    }
+  Ok(())
 }

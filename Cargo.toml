@@ -1,6 +1,7 @@
 [package]
 name = "ripledd_api_wrapper"
 version = "0.1.0"
+license = "MIT"
 authors = ["StarloExoliz mgamerdinge146@gmail.com"] 
 edition = "2021"
 
