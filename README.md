@@ -4,6 +4,8 @@
 
 An API Wrapper for Ripledd API's services💫
 
+Note: This is the Rust version of the **original** Ripledd API wrapper from [Foxy](https://github.com/foxy4096)
+
 ## Installation
 
 To use the Ripledd Rust library in your project, add it as a dependency in your `Cargo.toml` file:
