@@ -14,9 +14,6 @@ reqwest = "^0.11"
 [dev-dependencies]
 tokio = { version = "^1.2", features = ["full"] }
 
-[lib]
-name = "ripledd_api"
-
 [[bin]]
 name = "ripledd_cli"
 path = "src/main.rs"
