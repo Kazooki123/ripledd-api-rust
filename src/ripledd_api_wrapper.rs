@@ -1,4 +1,3 @@
-
 use std::collections::HashMap;
 use reqwest::Client;
 
@@ -29,7 +28,7 @@ impl RipleddClient {
         let mut data = HashMap::new();
         data.insert("email", &self.email);
         data.insert("password", &self.password);
-        data.insert("content", body.to_string());  // Convert &str to String
+        data.insert("content", &body.to_string());  // Convert &str to String
 
 
         if let Some(channel_id) = &self.channel_id {
