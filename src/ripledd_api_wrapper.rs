@@ -4,23 +4,40 @@ use reqwest::Client;
 const API_URL: &str = "https://ripledd.com/api/";
 
 static ENDPOINTS: &'static [&str] = &[
+    "me.php",
+    "post/create.php",
+    "login.php",
+    "logout.php",
+    "user.php",
+    "users.php",
     "post.php",
+    "signup.php",
+    "upload/avatar.php",
+    "upload/banner.php"
 ];
 
 pub struct RipleddClient {
     email: String,
     password: String,
+    username: String,
     channel_id: Option<String>,
     client: Client,
+    title: String,
+    content: String,
+    id: String
 }
 
 impl RipleddClient {
-    pub fn new(email: String, password: String, channel_id: Option<String>) -> Self {
+    pub fn new(email: String, password: String, username: String ,channel_id: Option<String>, title: String, content: String, id: String) -> Self {
         RipleddClient {
             email,
             password,
+            username,
             channel_id,
             client: Client::new(),
+            title,
+            content,
+            id
         }
     }
 
