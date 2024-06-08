@@ -16,4 +16,4 @@ tokio = { version = "^1.2", features = ["full"] }
 
 [[bin]]
 name = "ripledd_api_wrapper"
-path = "src/ripledd_api_wrapper.rs"
+path = "src/main.rs"
