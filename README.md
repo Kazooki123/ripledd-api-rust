@@ -12,7 +12,7 @@ To use the Ripledd Rust library in your project, add it as a dependency in your 
 
 ```Ini, TOML
 [dependencies]
-ripledd_api_wrapper = "0.1.0"
+ripledd_api_wrapper = { git = "https://github.com/Kazooki123/ripledd-api-rust" }
 ```
 
 Then, run `cargo build` to download and compile the library.
