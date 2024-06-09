@@ -16,6 +16,8 @@ const API_URL: &str = "https://ripledd.com/api/";
 //    "upload/banner.php"
 //];
 
+mod lib;
+
 pub struct RipleddClient {
     email: String,
     password: String,
@@ -59,5 +61,5 @@ impl RipleddClient {
 }
 
 fn main() {
-    println!("Ripledd API Wrapper IN Rust")
+    lib::greet();
 }
